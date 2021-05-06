@@ -1,6 +1,6 @@
-package io.jabberapp.client.model;
+package io.jabberapp.model;
 
-import io.jabberapp.client.controller.MessageValidator;
+import io.jabberapp.controller.MessageValidator;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package io.jabberapp.client.clientside;
+package io.jabberapp.clientside;
 
 import java.io.*;
 import java.net.Socket;

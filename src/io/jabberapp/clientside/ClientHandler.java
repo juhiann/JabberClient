@@ -1,6 +1,6 @@
-package io.jabberapp.client.clientside;
+package io.jabberapp.clientside;
 
-import io.jabberapp.client.model.Message;
+import io.jabberapp.model.Message;
 
 import java.io.*;
 import java.net.Socket;

@@ -1,6 +1,6 @@
-package io.jabberapp.client.main;
+package io.jabberapp.main;
 
-import io.jabberapp.client.clientside.Client;
+import io.jabberapp.clientside.Client;
 
 public class ClientMain
 {

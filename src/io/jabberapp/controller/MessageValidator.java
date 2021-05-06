@@ -1,8 +1,8 @@
-package io.jabberapp.client.controller;
+package io.jabberapp.controller;
 
 public class MessageValidator
 {
-    private static final String invalidMessageContentResponse = "invalidMessage";
+    private static final String INVALID_MESSAGE_RESPONSE = "invalidMessage";
 
     public static boolean isValidMessage(String prefix, String[] protocol)
     {
@@ -23,6 +23,6 @@ public class MessageValidator
             return prefix + " " + data;
         }
         else
-            return invalidMessageContentResponse;
+            return INVALID_MESSAGE_RESPONSE;
     }
 }

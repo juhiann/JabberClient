@@ -14,13 +14,16 @@ public class Client
     private static final int PORT = 44444;
     private ClientHandler clientHandler;
 
+    /**
+     *  Constructor
+     */
     public Client()
     {
         try {
             socket = new Socket(HOST, PORT);
             clientHandler = new ClientHandler(socket, this);
             new Thread(clientHandler).start();
-            listenForInput();
+            listenForInputFromServer();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -28,7 +31,10 @@ public class Client
         }
     }
 
-    private void listenForInput()
+    /**
+     *
+     */
+    private void listenForInputFromServer()
     {
         Scanner console = new Scanner(System.in);
         while (true)
@@ -36,7 +42,7 @@ public class Client
             while(!console.hasNextLine())
             {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -47,8 +53,9 @@ public class Client
             {
                 break;
             }
-            clientHandler.sendStringToServer(input);
+            clientHandler.sendJabberMessageToServer(input);
         }
+        System.out.println("Client Closed");
         clientHandler.close();
     }
 }

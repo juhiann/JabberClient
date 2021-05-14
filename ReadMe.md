@@ -1,3 +1,3 @@
 #Jabber Client
 
-- Run the Client from io.jabberapp.main.ClientMain.java.
+- Run the Client from io.jabberapp.clientside.ClientMain.java.

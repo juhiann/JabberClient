@@ -21,12 +21,13 @@ public class Controller {
   private TextField password;
   @FXML
   private Button register;
-
+  String text;
   public void loginAction(ActionEvent event) throws Exception{
 
-    String text = username.getText();
-    IncomeMessageController user = new IncomeMessageController(text);
-    if(user.) {
+    text = username.getText();
+    IncomeMessageController user = new IncomeMessageController();
+    user.
+
 
       Stage stage = new Stage();
       ((Node) event.getSource()).getScene().getWindow().hide();
@@ -34,7 +35,7 @@ public class Controller {
       Scene  scene = new Scene(root, 700, 500);
       stage.setScene(scene);
       stage.show();
-    }
+
 
 
   }

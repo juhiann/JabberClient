@@ -1,4 +1,4 @@
-package io.jabberapp.controller;
+package com.bham.fsd.assignments.jabberserver.controller;
 
 import com.bham.fsd.assignments.jabberserver.JabberMessage;
 
@@ -19,16 +19,15 @@ public class IncomeMessageController
      * Is the message from the server valid or not?
      * @param jMsg
      */
-    public void isValidMessage(JabberMessage jMsg)
+    public static void isValidMessage(JabberMessage jMsg)
     {
-        for (String msg : IncomeMessageController.INCOME_MESSAGES)
+        for (String msg : INCOME_MESSAGES)
         {
             if(jMsg.getMessage().equals(msg))
             {
 
             }
         }
-
     }
 
 }

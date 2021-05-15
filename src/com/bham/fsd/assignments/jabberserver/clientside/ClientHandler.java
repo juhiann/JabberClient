@@ -1,4 +1,4 @@
-package io.jabberapp.clientside;
+package com.bham.fsd.assignments.jabberserver.clientside;
 
 import com.bham.fsd.assignments.jabberserver.JabberMessage;
 import java.io.*;

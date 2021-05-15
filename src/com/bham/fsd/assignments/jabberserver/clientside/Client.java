@@ -1,5 +1,7 @@
 package com.bham.fsd.assignments.jabberserver.clientside;
 
+import com.bham.fsd.assignments.jabberserver.JabberMessage;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -12,7 +14,6 @@ public class Client
     private DataOutputStream out;
     private static final String HOST = "localhost";
     private static final int PORT = 44444;
-    private ClientHandler clientHandler;
 
     /**
      *  Constructor
@@ -21,9 +22,6 @@ public class Client
     {
         try {
             socket = new Socket(HOST, PORT);
-            clientHandler = new ClientHandler(socket, this);
-            new Thread(clientHandler).start();
-            listenForInputFromServer();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -31,31 +29,34 @@ public class Client
         }
     }
 
-    /**
-     *
-     */
-    private void listenForInputFromServer()
-    {
-        Scanner console = new Scanner(System.in);
-
-        while (true)
-        {
-            while(!console.hasNextLine())
-            {
-                try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            String input = console.nextLine();
-
-            if (input.equalsIgnoreCase("quit")) {
-                break;
-            }
-            clientHandler.sendJabberMessageToServer();
-        }
-        System.out.println("Client Closed");
-        clientHandler.close();
+    public Socket getSocket() {
+        return socket;
     }
+
+//    /**
+//     *
+//     */
+//    public void listenForInputFromServer()
+//    {
+//        Scanner console = new Scanner(System.in);
+//
+//        while(true)
+//        {
+//            while(!console.hasNextLine())
+//            {
+//                try {
+//                    Thread.sleep(300);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            String input = console.nextLine();
+//
+//            if (input.equalsIgnoreCase("quit")) {
+//                break;
+//            }
+//        }
+//        System.out.println("Client Closed");
+//        clientHandler.close();
+//    }
 }

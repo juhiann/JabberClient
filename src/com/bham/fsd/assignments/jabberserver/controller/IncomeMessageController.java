@@ -25,7 +25,8 @@ public class IncomeMessageController
         {
             if(jMsg.getMessage().equals(msg))
             {
-
+// thats just to check verunne message correct aano ennu ...
+                // molilthe string array il ondo ennu nokunne ollu athu
             }
         }
     }

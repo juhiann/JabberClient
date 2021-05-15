@@ -3,6 +3,7 @@ package com.bham.fsd.assignments.jabberserver.clientside;
 import com.bham.fsd.assignments.jabberserver.JabberMessage;
 import java.io.*;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class ClientHandler implements Runnable
 {
@@ -32,12 +33,24 @@ public class ClientHandler implements Runnable
      * JabberMessage object to the server.
      *
      */
-    public void sendJabberMessageToServer()
+    public void sendJabberMessageToServer(JabberMessage jmessage)
     {
         try {
+            Scanner sc = new Scanner(System.in);
+
+            //This is just here so that it doesnt automatically connect to the server
+            //It connects and goes past this only when you hit enter in the console
+            while(!sc.hasNextLine())
+            {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             out.flush();
-            out.writeObject(jbmsg);
-            out.flush();
+            out.writeObject(jmessage); // pass jmessage to here
+//            out.flush();
             if (jbmsg.getMessage().contains("signout"))
             {
                 close();

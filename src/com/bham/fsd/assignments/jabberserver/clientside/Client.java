@@ -37,6 +37,7 @@ public class Client
     private void listenForInputFromServer()
     {
         Scanner console = new Scanner(System.in);
+
         while (true)
         {
             while(!console.hasNextLine())
@@ -49,11 +50,10 @@ public class Client
             }
             String input = console.nextLine();
 
-            if (input.equalsIgnoreCase("quit"))
-            {
+            if (input.equalsIgnoreCase("quit")) {
                 break;
             }
-            clientHandler.sendJabberMessageToServer(input);
+            clientHandler.sendJabberMessageToServer();
         }
         System.out.println("Client Closed");
         clientHandler.close();

@@ -10,7 +10,7 @@ public class ClientHandler implements Runnable
     ObjectOutputStream out;
     ObjectInputStream in;
     JabberMessage jbmsg = new JabberMessage("signin edballs");
-
+    int messageiterator = 1;
     /**
      * Constructor
      * @param socket
@@ -31,18 +31,34 @@ public class ClientHandler implements Runnable
      * This method is responsible for sending the
      * JabberMessage object to the server.
      *
-     * @param input
      */
-    public void sendJabberMessageToServer(String input)
+    public void sendJabberMessageToServer()
     {
         try {
             out.flush();
             out.writeObject(jbmsg);
+            out.flush();
+            if (jbmsg.getMessage().contains("signout"))
+            {
+                close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
             close();
         }
-        jbmsg = new JabberMessage("invalidMessageTest edballs");
+
+        messageiterator++;
+
+        if (messageiterator == 2)
+            jbmsg = new JabberMessage("signin Non-Existing-User"); // unknown-user
+        if (messageiterator == 3)
+            jbmsg = new JabberMessage("register edballs"); //already exists
+        if (messageiterator == 4)
+            jbmsg = new JabberMessage("register DummyUser1"); //signin
+        if (messageiterator == 5)
+            jbmsg = new JabberMessage("invalidMessage blabla"); //invalid message
+        if (messageiterator == 6)
+            jbmsg = new JabberMessage("signout"); //no response
     }
 
     @Override

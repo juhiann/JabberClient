@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.jabberapp.JabberFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bham.fsd.assignments.jabberserver.JabberFX.Controller">
     <children>
         <Label layoutX="121.0" layoutY="123.0" prefHeight="18.0" prefWidth="62.0" text="Username" />
         <Label layoutX="121.0" layoutY="160.0" prefHeight="18.0" prefWidth="62.0" text="Password" />

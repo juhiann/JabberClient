@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.jabberapp.JabberFX.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bham.fsd.assignments.jabberserver.JabberFX.UserController">
    <children>
       <Button fx:id="signOut" layoutX="312.0" layoutY="406.0" mnemonicParsing="false" onAction="#signOut" text="Sign Out" />
       <Label alignment="CENTER" layoutX="260.0" layoutY="23.0" prefHeight="18.0" prefWidth="79.0" text="Welcome" textAlignment="CENTER" />

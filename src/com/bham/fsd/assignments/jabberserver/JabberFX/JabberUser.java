@@ -1,4 +1,4 @@
-package io.jabberapp.JabberFX;
+package com.bham.fsd.assignments.jabberserver.JabberFX;
 
 import javafx.beans.property.SimpleStringProperty;
 

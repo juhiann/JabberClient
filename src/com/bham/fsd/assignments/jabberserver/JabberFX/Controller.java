@@ -1,5 +1,6 @@
-package io.jabberapp.JabberFX;
+package com.bham.fsd.assignments.jabberserver.JabberFX;
 
+import com.bham.fsd.assignments.jabberserver.controller.IncomeMessageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +24,18 @@ public class Controller {
 
   public void loginAction(ActionEvent event) throws Exception{
 
-    Stage stage = new Stage();
-    ((Node)event.getSource()).getScene().getWindow().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("User.fxml"));
-    Scene scene = new Scene(root, 700,500);
-    stage.setScene(scene);
-    stage.show();
+    String text = username.getText();
+    IncomeMessageController user = new IncomeMessageController(text);
+    if(user.) {
+
+      Stage stage = new Stage();
+      ((Node) event.getSource()).getScene().getWindow().hide();
+      Parent root  = FXMLLoader.load(getClass().getResource("User.fxml"));
+      Scene  scene = new Scene(root, 700, 500);
+      stage.setScene(scene);
+      stage.show();
+    }
+
 
   }
   public void registerAction(ActionEvent event) throws Exception{

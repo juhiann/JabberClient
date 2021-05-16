@@ -21,41 +21,38 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable
 {
-    Client c = new Client();
-    ClientHandler clientHandler = new ClientHandler(c.getSocket());
+    Client client = new Client();
+    ClientHandler clientHandler;
     ObjectInputStream in;
-    JabberMessage inJMsg = null;
+    JabberMessage incomingJabberMessage = null;
+    JabberMessage outgoingJabberMessage = null;
 
     @FXML private Button login;
     @FXML private TextField username;
     @FXML private Button register;
 
-    JabberMessage jmsg = null;
-
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        clientHandler = new ClientHandler(client.getSocket());
         new Thread(clientHandler).start();
-
+        try {
+            in = new ObjectInputStream(client.getSocket().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loginAction(ActionEvent event) throws Exception
     {
-        try {
-            in = new ObjectInputStream(c.getSocket().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        jmsg = new JabberMessage("signin " + username.getText());
-        clientHandler.sendJabberMessageToServer(jmsg);
-
+        outgoingJabberMessage = new JabberMessage("signin " + username.getText());
+        clientHandler.sendJabberMessageToServer(outgoingJabberMessage);
 
         try {
-            inJMsg = (JabberMessage)in.readObject();
-            System.out.println("[GUI]: " + inJMsg.getMessage());
+            incomingJabberMessage = (JabberMessage)in.readObject();
+            System.out.println("[GUI]: " + incomingJabberMessage.getMessage());
 
-            if (inJMsg.getMessage().equals("signedin"))
+            if (incomingJabberMessage.getMessage().equals("signedin"))
             {
                 Stage stage = new Stage();
                 ((Node) event.getSource()).getScene().getWindow().hide();
@@ -64,13 +61,15 @@ public class Controller implements Initializable
                 stage.setScene(scene);
                 stage.show();
             }
-            else{
+            else {
                 System.out.println("[CLIENT]: Incorrect Login. Try again.");
             }
         } catch (IOException e) {
+            System.out.println("Here 1");
             in.close();
             clientHandler.close();
         } catch (ClassNotFoundException e2) {
+            System.out.println("Here 2");
             in.close();
             clientHandler.close();
         }
@@ -78,21 +77,15 @@ public class Controller implements Initializable
 
     public void registerAction(ActionEvent event) throws Exception
     {
-        try {
-            in = new ObjectInputStream(c.getSocket().getInputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        jmsg = new JabberMessage("register " + username.getText());
-        clientHandler.sendJabberMessageToServer(jmsg);
+        outgoingJabberMessage = new JabberMessage("register " + username.getText());
+        clientHandler.sendJabberMessageToServer(outgoingJabberMessage);
 
 
         try {
-            inJMsg = (JabberMessage)in.readObject();
-            System.out.println("[GUI]: " + inJMsg.getMessage());
+            incomingJabberMessage = (JabberMessage)in.readObject();
+            System.out.println("[GUI]: " + incomingJabberMessage.getMessage());
 
-            if (inJMsg.getMessage().equals("signedin"))
+            if (incomingJabberMessage.getMessage().equals("signedin"))
             {
                 Stage stage = new Stage();
                 ((Node)event.getSource()).getScene().getWindow().hide();

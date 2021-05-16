@@ -9,8 +9,7 @@ public class ClientHandler implements Runnable
 {
     Socket socket;
     ObjectOutputStream out;
-    JabberMessage jbmsg = new JabberMessage("signin edballs");
-    int messageiterator = 1;
+
     /**
      * Constructor
      * @param socket
@@ -37,11 +36,7 @@ public class ClientHandler implements Runnable
 
             out.flush();
             out.writeObject(jmessage);
-
-            if (jbmsg.getMessage().contains("signout"))
-            {
-                close();
-            }
+            out.flush();
         } catch (IOException e) {
             e.printStackTrace();
             close();

@@ -15,7 +15,7 @@ public class Main extends Application
     {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("Jabber");
-        primaryStage.setScene(new Scene(root, 500, 400));
+        primaryStage.setScene(new Scene(root, 315, 400));
         primaryStage.show();
     }
 
